@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Booking Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      color: #333;
+    }
+
+    nav {
+      background-color: #4a90e2;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .spacer {
+      height: 100px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #d0e1f9;
+      border: 2px solid #4a90e2;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 60%;
+      margin: 2rem auto 1rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+      background: #fdfdfd;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2d2d2d;
+      font-size: 2rem;
+      border-bottom: 3px solid #6c63ff;
+      display: inline-block;
+      margin: 1rem auto;
+    }
+
+    #books {
+      text-align: center;
+    }
+
+    #books ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    #books li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    #bookFormContainer {
+      display: none;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 20px;
+      background: #f5f8ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #bookFormContainer h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      margin-left: 10px;
+    }
+
+    .book-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    #total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #357ABD;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a onclick="toggleForm()">Book Now</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>📚 BookMyRead</h1>
+    <p>Reserve your favorite books online instantly!</p>
+  </header>
+
+  <div class="spacer"></div>
+
+  <section id="books">
+    <h2>Available Books</h2>
+    <ul>
+      <li>The Great Gatsby by F. Scott Fitzgerald</li>
+      <li>1984 by George Orwell</li>
+      <li>To Kill a Mockingbird by Harper Lee</li>
+      <li>Harry Potter and the Sorcerer's Stone by J.K. Rowling</li>
+    </ul>
+  </section>
+
+  <div class="spacer"></div>
+
+  
+  <div id="bookFormContainer">
+    <h2>Book Registration Form</h2>
+
+    <form id="bookForm">
+      <div>
+        <h3>Select Books</h3>
+        <div class="book-item">The Great Gatsby - ₹100 <input type="number" min="0" value="0" data-price="100"></div>
+        <div class="book-item">1984 - ₹120 <input type="number" min="0" value="0" data-price="120"></div>
+        <div class="book-item">To Kill a Mockingbird - ₹90 <input type="number" min="0" value="0" data-price="90"></div>
+        <div class="book-item">Harry Potter - ₹150 <input type="number" min="0" value="0" data-price="150"></div>
+        <div class="book-item">Emergence - ₹110 <input type="number" min="0" value="0" data-price="110"></div>
+      </div>
+
+      <h3>Customer Details</h3>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required pattern="\d{10}">
+      <textarea placeholder="Address" rows="3" required></textarea>
+
+      <div id="total">Total: ₹0</div>
+
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+
+  <footer id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@bookmyread.com</p>
+    <p>Phone: +91 8966956945</p>
+    <p>&copy; 2025 BookMyRead. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+    function toggleForm() {
+      const form = document.getElementById('bookFormContainer');
+      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+      window.scrollTo({ top: form.offsetTop, behavior: 'smooth' });
+    }
+
+   
+    
+  </script>
+</body>
+</html>
